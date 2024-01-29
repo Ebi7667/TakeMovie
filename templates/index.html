@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+      <!-- Slider Start -->
+      <section id="home" class="iq-main-slider p-3 iq-rtl-direction">
+         <div id="home-slider" class="slider m-0 p-0">
+            <div class="slide slick-bg s-bg-1">
+               <div class="container-fluid position-relative h-100">
+                  <div class="slider-inner h-100">
+                     <div class="row align-items-center  iq-ltr-direction h-100 ">
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <a href="javascript:void(0);">
+                              <div class="channel-logo" data-animation-in="fadeInLeft" data-delay-in="0.5">
+                                <span>TakeMovies</span>
+                              </div>
+                           </a> 
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="slide slick-bg s-bg-3">
+                <div class="container-fluid position-relative h-100">
+                  <div class="slider-inner h-100">
+                     <div class="row align-items-center  h-100 iq-ltr-direction">
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                        </div>
+                     </div>
+                  </div>
+               </div> 
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+               <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="44px" height="44px" id="circle"
+                  fill="none" stroke="white">
+   
+                  <circle r="20" cy="22" cx="22" id="test"></circle>
+               </symbol>
+            </svg>
+            </div>
+      </section>
+      <!-- Slider End -->
+      <!-- MainContent -->
+      <div class="main-content">
+         <section id="iq-favorites">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-sm-12 overflow-hidden">
+                     <div class="iq-main-header d-flex align-items-center justify-content-between">
+                        <h4 class="main-title">جدیدترین فیلم ها</h4>
+                        <a class="iq-view-all" href="movie-category.html">مشاهده همه</a>                   
+                     </div>
+                        <div class="favorites-contens">
+                           <ul class="favorites-slider list-inline  row p-0 mb-0 iq-rtl-direction">
+                                 {% for i in filmdb %}
+                                    <li class="slide-item">
+                                    
+                                       <div class="block-images position-relative">
+                                             
+                                                <div class="img-box">
+                                                   <img style="width: 500px;height: 250px;" src="{{i.photo.url}}" class="img-fluid" alt="">
+                                                </div>  
+                                        </div>
+                                        <br>
+                                        <h6 style="text-align: center;" class="iq-title">{{i.name}}</h6>
+                                        <br>
+                                        <div style="text-align: center;direction:rtl">
+                                           <span class="text-white">مدت زمان :{{i.running_time}}</span>
+                                           <br>
+                                           <div class="badge badge-secondary p-1 mr-2">{{i.limit_age}}</div>
+                                        </div>
+                                        <br>
+                                        <div style="text-align: center;" class="hover-buttons">
+                                          <a href="{% url 'frontend_Detail' i.id %}" role="button" class="btn btn-hover iq-button">
+                                          <i  class="" aria-hidden="true"></i>
+                                             جزئیات
+                                          </a>
+                                       </div> 
+                                    </li>
+                                 {% endfor %} 
+                            </ul>
+                        </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section id="iq-upcoming-movie">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-sm-12 overflow-hidden">
+                     <div class="iq-main-header d-flex align-items-center justify-content-between">                        
+                        <h4 class="main-title">فیلم های آینده</h4>
+                        <a class="iq-view-all" href="movie-category.html">View All</a>
+                     </div>
+                     <div class="upcoming-contens">
+                        <ul class="favorites-slider list-inline row p-0 mb-0 iq-rtl-direction">
+                           {% for i in new_film %}
+                                 <li class="slide-item">
+                                    
+                                       <div class="block-images position-relative">
+                                          <div class="img-box">
+                                             <img style="width: 500px;height:250px" src="{{i.photo.url}}" class="img-fluid" alt="">
+                                          </div>
+                                       </div>
+                                       <br>
+                                       <h6 style="text-align: center;" class="iq-title">{{i.name}}</h6>
+                                       <br>
+                                       <div style="text-align: center;direction:rtl">
+                                          <span class="text-white">مدت زمان :{{i.running_time}}</span>
+                                          <br>
+                                          <div class="badge badge-secondary p-1 mr-2">{{i.limit_age}}</div>
+                                       </div>
+                                       <br>
+                                       <div style="text-align: center;" class="hover-buttons">
+                                         <a href="{% url 'frontend_Detail' i.id %}" role="button" class="btn btn-hover iq-button">
+                                         <i  class="" aria-hidden="true"></i>
+                                            جزئیات
+                                         </a>
+                                      </div> 
+                                    </li>
+                              {% endfor %}
+                           </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section id="iq-suggestede" class="s-margin">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-sm-12 overflow-hidden">
+                     <div class="iq-main-header d-flex align-items-center justify-content-between">                       
+                        <h4 class="main-title">   بهترین سریال ها </h4>
+                        <a class="iq-view-all" href="movie-category.html">مشاهده همه</a>                     
+                     </div>
+                     <div class="suggestede-contens">
+                        <ul class="list-inline favorites-slider row p-0 mb-0 iq-rtl-direction">
+                           {% for i in seriesdb %}
+                              <li class="slide-item">
+                                 
+                                    <div class="block-images position-relative">
+                                       <div class="img-box">
+                                          <img style="width: 500px;height: 250px;" src="{{i.photo.url}}" class="img-fluid" alt="">
+                                       </div>
+                                    </div>
+                                    <br>
+                                    <div style="direction: rtl;text-align:center">
+                                       <h6 class="iq-title">{{i.name}}</h6>
+                                       <span class="text-white">مدت زمان:{{i.running_time}}</span>
+                                          <br>
+                                       <div class="badge badge-secondary p-1 mr-2">{{i.limit_age}}</div>
+                                       <div class="hover-buttons">
+                                          <br>
+                                          <a href="{% url 'frontend_Detail' i.id %}" role="button" class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>
+                                          جزئیات</a>
+                                       </div>
+                                    </div>
+                              </li>
+                           {% endfor %}
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section id="parallex" class="parallax-window">
+            <div class="container-fluid h-100">
+               <div class="row align-items-center justify-content-center h-100 parallaxt-details">
+                  <div class="col-lg-4 r-mb-23">
+                     <div class="text-left">
+                      
+                        <h1 class="trending-text big-title text-uppercase">{{incdb.name}}  </h1>
+
+                        <div class="parallax-ratting d-flex align-items-center mt-3 mb-3">
+                           <ul
+                              class="ratting-start p-0 m-0 list-inline text-primary d-flex align-items-center justify-content-left">
+                              <li><a href="javascript:void(0);" class="text-primary"><i class="fa fa-star"
+                                 aria-hidden="true"></i></a></li>
+                              <li><a href="javascript:void(0);" class="pl-2 text-primary"><i class="fa fa-star"
+                                 aria-hidden="true"></i></a></li>
+                              <li><a href="javascript:void(0);" class="pl-2 text-primary"><i class="fa fa-star"
+                                 aria-hidden="true"></i></a></li>
+                              <li><a href="javascript:void(0);" class="pl-2 text-primary"><i class="fa fa-star"
+                                 aria-hidden="true"></i></a></li>
+                              <li><a href="javascript:void(0);" class="pl-2 text-primary"><i class="fa fa-star-half-o"
+                                 aria-hidden="true"></i></a></li>
+                           </ul>
+                           <span class="text-white ml-3">{{incdb.point}} (lmdb)</span>
+                        </div>
+                        <div class="movie-time d-flex align-items-center mb-3 iq-ltr-direction">
+                           <h6 class="text-white">مدت زمان :{{incdb.running_time}}</h6>
+                           <br>
+                           <div class="badge badge-secondary mr-3">{{incdb.limit_age}}</div>
+                        </div>
+                        <p align="justify">{{incdb.discription}}</p>
+                        <div class="parallax-buttons">
+                           <a href="{% url 'frontend_Detail' incdb.id %}" class="btn btn-hover">تماشا کردن</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-8">
+                     <div class="parallax-img">
+                        <a href="movie-details.html">
+                        	<img  src="{{incdb.photo.url}}" class="img-fluid w-100" alt="bailey">
+                        </a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section id="iq-trending" class="s-margin">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-sm-12 overflow-hidden">
+                     <div class="iq-main-header d-flex align-items-center justify-content-between">                      
+                        <h4 class="main-title">پرطرفدار</h4>                        
+                     </div>
+                     <div class="trending-contens">
+                        <ul id="trending-slider-nav" class="list-inline p-0 mb-0 row align-items-center iq-rtl-direction">
+                           {% for i in filmdb %}
+                           <li>
+                              <a href="javascript:void(0);">
+                                 <div class="movie-slick position-relative">
+                                    <img style="width: 500px;height: 250px;" src="{{i.photo.url}}" class="img-fluid" alt="">
+                                 </div>
+                              </a>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                        <ul id="trending-slider" class="list-inline p-0 m-0  d-flex align-items-center iq-rtl-direction">
+                           {% for i in filmdb %}
+                           <li>
+                              <div class="tranding-block position-relative"
+                              {% if i.photo %}
+                                 style="background-image: url({{i.photo.url}});">
+                              {% else %}
+                                    <img src="{% static 'A Dreamy World Wallpaper  (15).jpg'%}" alt="">
+                              {% endif %}
+                                 <div class="trending-custom-tab">
+                                    <div class="tab-title-info position-relative iq-ltr-direction">
+                                       <ul class="trending-pills d-flex nav nav-pills justify-content-center align-items-center text-center iq-ltr-direction"
+                                          role="tablist">
+                                          <li class="nav-item">
+                                             <a class="nav-link active show" data-toggle="pill" href="#trending-data1"
+                                                role="tab" aria-selected="true">جزئیات </a>
+                                          </li>
+                              
+                                       </ul>
+                                    </div>
+                                    <div class="trending-content">
+                                       <div id="trending-data1" class="overlay-tab tab-pane fade active show ">
+                                          <div class="trending-info align-items-center w-100 animated fadeInUp iq-ltr-direction">
+                                             <a href="javascript:void(0);" tabindex="0">
+                                                <div class="res-logo">
+                                                 
+                                                </div>
+                                             </a>
+                                             <h1 class="trending-text big-title text-uppercase"> {{i.name}} </h1>
+
+                                             <div class="d-flex align-items-center text-white text-detail">
+                                                <span class="badge badge-secondary p-3">{{i.limit_age}}</span>
+                                                
+                                             </div>
+                                       
+                                             <p class="trending-dec">{{i.discription}}
+                                             </p>
+                                             <div class="p-btns">
+                                                <div class="d-flex align-items-center p-0">
+                                                   <a href="show-details.html" class="btn btn-hover mr-2" tabindex="0"><i
+                                                      class="fa fa-play mr-2" aria-hidden="true"></i> دانلود</a>
+                                                </div>
+                                             </div>
+                                             <div class="trending-list mt-4">
+                                                <div class="text-primary title">{{i.zhanr}} : <span class="text-body">خشن,
+                                                   جنایی</span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+      </div>
+{% endblock content %}

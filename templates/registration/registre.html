@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %} 
+<br>
+<br>
+<br>
+<hr>
+<center>
+<form style="text-align:left; width:500px" action="" method="post">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="register">
+
+
+</form>
+</center>
+{% endblock content %}

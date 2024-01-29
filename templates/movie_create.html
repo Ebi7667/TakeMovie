@@ -1,0 +1,27 @@
+<body style="background-color: white;">
+   
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+<br>
+
+
+<h1 style="color: black;">فیلم خود را بسازید :</h1><br><hr>
+<center>
+
+<form style="width: 25%; background-color:rgb(255, 255, 255);" class="text-center" action="" method="post" novalidate enctype="multipart/form-data">
+   {% csrf_token %}
+   {{form.as_p}}
+   <a  href=""><input style="background-color: blue;" class="text-center" type="submit" value="ثبت"></a>
+
+
+</form>
+</center>
+
+</body>
+
+
+{% endblock content %}
